@@ -25,10 +25,11 @@ header{
     justify-content: space-between;
 }
 #container{
+    width: 75%;
     border-right: 1px solid #6C6C6C;
 }
 #side-bar{
-    width: 30rem;
+    width: 25%;
     padding-top: 2rem;
 }
 
@@ -47,7 +48,7 @@ header{
 }
 
 .menu {
-    width: 30rem;
+    width: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +74,7 @@ header{
     background-color: #fff;
     right: 0;
     top: 10rem;
-    width: 30rem;
+    width: 25%;
 }
 
 .nav-item {
@@ -86,7 +87,6 @@ header{
     border-right: 1px solid #6C6C6C;
     padding: 2rem;
     cursor: pointer;
-    width: 30rem;
 }
 
 .nav-item:hover {
