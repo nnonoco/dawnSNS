@@ -1,7 +1,18 @@
 @charset "utf-8";
 html{
+    font-size: 62.5%;
 }
 body{
+    font-family: "Kiwi Maru", serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: gray;
+  background-color: #ffffff;
+}
+
+a {
+    color: gray;
 }
 /* header */
 header{
@@ -11,12 +22,174 @@ header{
 /* main content */
 #row{
     display: flex;
-    flex-flow: row wrap;
+    justify-content: space-between;
 }
 #container{
-    flex: 0 0 80%;
+    border-right: 1px solid #6C6C6C;
 }
 #side-bar{
-    flex: 0 0 19%;
+    width: 30rem;
+    padding-top: 2rem;
+}
+
+/* ヘッダー */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    height: 10rem;
+}
+
+.header h1 {
+    padding-left: 5rem;
+}
+
+.menu {
+    width: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.menu p {
+    margin: 0 2rem;
+    color: #fff;
+}
+
+.menu img {
+    margin: 0 2rem;
+    border-radius: 3px;
+}
+
+/* プルダウン */
+.g-nav {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    background-color: #fff;
+    right: 0;
+    top: 10rem;
+    width: 30rem;
+}
+
+.nav-item {
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #6C6C6C;
     border-left: 1px solid #6C6C6C;
+    border-right: 1px solid #6C6C6C;
+    padding: 2rem;
+    cursor: pointer;
+    width: 30rem;
+}
+
+.nav-item:hover {
+    background-color: coral;
+    color: #fff;
+}
+
+/* やじるし */
+.menu-trigger {
+    position: relative;
+    width: 3rem;
+    height: 4.3rem;
+    margin: 0 2rem;
+}
+
+.menu-trigger span{
+    display: block;
+    position: absolute;
+    width: 3rem;
+border-bottom: solid 3px #fff;
+    border-radius: 3px;
+    transition: .35s ease-in-out;
+}
+.menu-trigger span:nth-child(1) {
+    top: 0.6rem;
+  }
+  .menu-trigger span:nth-child(2) {
+    top: 1.8rem;
+  }
+  .menu-trigger span:nth-child(3) {
+    top: 3rem;
+  }
+  /* 1番上のspan要素をマイナス45度方向に回す */
+.menu-trigger.active span:nth-child(1) {
+    top: 18px;
+    transform: rotate(-45deg);
+}
+
+/* 2番目と3番目のspan要素を45度方向に回す */
+.menu-trigger.active span:nth-child(2),
+.menu-trigger.active span:nth-child(3) {
+    top: 18px;
+    transform: rotate(45deg);
+}
+
+/* サイドバー */
+#confirm {
+    border-bottom: 1px solid gray;
+    padding: 0 3rem;
+    height: 30rem;
+}
+.confirm-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.btn {
+    display: flex;
+   justify-content: center;
+   align-items: center;
+    background: #3C4767;
+    margin: 3rem 0 3rem auto;
+    height: 5rem;
+    width: 15rem;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.search-btn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: #3C4767;
+    color: #fff;
+    width: 15rem;
+    height: 5rem;
+    border-radius: 10px;
+    margin: 3rem auto;
+}
+
+/*　投稿画面　*/
+.post-wrapper {
+    display: flex;
+    border-bottom: 2px solid gray;
+    padding: 3rem 5rem;
+}
+
+/*　タイムライン　*/
+.timeline {
+    display: block;
+}
+
+.timeline-container {
+    border-bottom: 1px solid gray;
+}
+
+.timeline-wrapper {
+    display: flex;
+    border-bottom: 1px solid gray;
+}
+
+.timeline-name {
+    display: flex;
+    justify-content: space-around;
 }
