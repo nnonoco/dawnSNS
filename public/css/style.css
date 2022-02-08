@@ -171,25 +171,41 @@ border-bottom: solid 3px #fff;
 /*　投稿画面　*/
 .post-wrapper {
     display: flex;
+    align-items: flex-end;
     border-bottom: 2px solid gray;
-    padding: 3rem 5rem;
+    padding: 1rem;
+    width: auto;
 }
-
+input.form-control {
+    height: 5rem;
+    vertical-align: top;
+    border: solid 0px;
+    width: 100%;
+}
+.post-item {
+    margin: 0 1rem;
+    width: 70%;
+}
+.submit {
+    height: 3rem;
+    width: 3rem;
+}
 /*　タイムライン　*/
-.timeline {
-    display: block;
-}
-
-.timeline-container {
-    border-bottom: 1px solid gray;
-}
-
 .timeline-wrapper {
-    display: flex;
     border-bottom: 1px solid gray;
+    padding: 2rem;
+    display: flex;
 }
-
+.timeline-image {
+    margin-right: 2rem;
+}
 .timeline-name {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+.created-at {
+    text-align: right;
+}
+.timeline-post {
+    margin: 2rem 0;
 }
