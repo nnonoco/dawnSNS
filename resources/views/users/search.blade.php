@@ -22,7 +22,12 @@
       <td><img src="{{asset('images/'.$userimage)}}"></td>
       <td>{{ $result->username }}</td>
       <td>
-        <button class="" type="button" name="follow">フォロー中</button>
+        <form action="" method="post">
+          <input type="hidden" name="loginName" value="{{$id}}" class="login_name">
+          <input type="hidden" name="currentName" value="{{$result->id}}" class="current_name">
+          <button class="" type="button" name="follow">フォロー中</button>
+          <button class="" type="button" name="follow">フォローする</button>
+        </form>
       </td>
     </tr>
     @endforeach
