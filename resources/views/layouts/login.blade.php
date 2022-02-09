@@ -39,8 +39,7 @@
             <span></span>
             <span></span>
           </div>
-          <img>
-          <!-- $images -->
+          <img src="{{asset('images/'.$userimage)}}">
         </div>
       </nav>
       <!--プルダウン-->

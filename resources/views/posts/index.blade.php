@@ -6,8 +6,7 @@
 <div class="post-container">
   {!! Form::open(['url' => 'post/create']) !!}
   <div class="post-wrapper">
-    <!--イメージを出せない-->
-    <img>{{ $userimage }}</img>
+    <img src="{{asset('images/'.$userimage)}}">
     <div class="post-item">
       {{ Form::input('text','newPosts',null,['class' => 'form-control','placeholder'=>'何をつぶやこうか…？'])}}
     </div>
@@ -19,9 +18,8 @@
     <div class="timeline-container">
       @foreach ($post as $post)
       <div class="timeline-wrapper">
-        <!--イメージを出せない-->
         <div class="timeline-image">
-          <img>{{ $post->images }}
+          <img src="{{asset('images/'.$userimage)}}">
         </div>
         <div>
           <div class="timeline-name">

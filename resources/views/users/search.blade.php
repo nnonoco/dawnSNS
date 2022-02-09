@@ -19,7 +19,7 @@
   <table class="">
     @foreach($result as $result)
     <tr></tr>
-    <td>{{ $result->images }}</td>
+    <td><img src="{{asset('images/'.$userimage)}}"></td>
     <td>{{ $result->username }}</td>
     </tr>
     @endforeach
