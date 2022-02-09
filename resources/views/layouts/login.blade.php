@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="description" content="ページの内容を表す文章" />
   <title></title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{{asset('css/reset.css')}}">
+  <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <!--スマホ,タブレット対応-->
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <!--サイトのアイコン指定-->
@@ -26,7 +26,11 @@
     <div id="head">
       <!--ヘッダーロゴ-->
       <nav class="header">
-        <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
+        <h1>
+          <a href="/top">
+            <img src="{{asset('images/main_logo.png')}}">
+          </a>
+        </h1>
         <!--名前アイコン-->
         <div class="menu">
           <p>{{ $username }}さん</p>

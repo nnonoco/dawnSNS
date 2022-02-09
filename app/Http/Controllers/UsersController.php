@@ -20,10 +20,11 @@ class UsersController extends Controller
     }
     public function result()
     {
+        $search_username = $_POST["searchName"];
         $result = DB::table('users')
-            ->where('username', 'like', '%' . $_POST["searchName"] . '%')
+            ->where('username', 'like', '%' . $search_username . '%')
             ->get();
 
-        return view('users.search', ['result' => $result]);
+        return view('users.search', ['search_username' => $search_username], ['result' => $result]);
     }
 }
