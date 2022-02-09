@@ -28,6 +28,7 @@ class Controller extends BaseController
             $countFollow = Follow::where('follower', '=', Auth::id())
                 ->count();
             //全ビューで共通で使えるよう渡してあげる。むっちゃ素敵。
+            View::share('id', $username['id']);
             View::share('username', $username['username']);
             View::share('userimage', $username['images']);
             View::share('countFollower', $countFollower);

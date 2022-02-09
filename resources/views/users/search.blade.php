@@ -21,6 +21,9 @@
     <tr>
       <td><img src="{{asset('images/'.$userimage)}}"></td>
       <td>{{ $result->username }}</td>
+      <td>
+        <button class="" type="button" name="follow">フォロー中</button>
+      </td>
     </tr>
     @endforeach
   </table>
