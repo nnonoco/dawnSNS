@@ -21,14 +21,27 @@
     <tr>
       <td><img src="{{asset('images/'.$userimage)}}"></td>
       <td>{{ $result->username }}</td>
+      <!--フォロー中ボタン-->
+      @if(isset($follow))
       <td>
-        <form action="" method="post">
-          <input type="hidden" name="loginName" value="{{$id}}" class="login_name">
-          <input type="hidden" name="currentName" value="{{$result->id}}" class="current_name">
-          <button class="" type="button" name="follow">フォロー中</button>
-          <button class="" type="button" name="follow">フォローする</button>
+        <form action="/follow/delete" method="POST">
+          @csrf
+          <input type="hidden" name="loginId" value="{{$id}}" class="login_name">
+          <input type="hidden" name="currentId" value="{{$result->id}}" class="current_name">
+          <input type="submit" class="follow_button" name="submit" value="フォロー中">
         </form>
       </td>
+      @else
+      <!--フォローするボタン-->
+      <td>
+        <form action="/follow" method="POST">
+          @csrf
+          <input type="hidden" name="loginId" value="{{$id}}" class="login_name">
+          <input type="hidden" name="currentId" value="{{$result->id}}" class="current_name">
+          <input type="submit" class="follow_button" name="submit" value="フォローする">
+        </form>
+      </td>
+      @endif
     </tr>
     @endforeach
   </table>

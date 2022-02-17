@@ -42,7 +42,8 @@ Route::post('/search/result', 'UsersController@result');
 
 Route::get('/follow-list', 'PostsController@index');
 Route::get('/follower-list', 'PostsController@index');
-//フォロー・フォロワ
-
+//フォローする
+Route::post('/follow', 'FollowsController@follow');
+Route::post('/follow/delete', 'FollowsController@followDelete');
 //ログアウト
 Route::get('/logout', 'PostsController@logout');
