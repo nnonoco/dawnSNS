@@ -5,8 +5,8 @@
 <div class="">
   @foreach($follow_image as $follow_image)
   <div class="">
-    <a href="{{asset('/profile')}}">
-      <img src="{{asset('images/'.$follow_image)}}">
+    <a href="/post/{{ $follow_image->id }}/profile">
+      <img src="{{asset('images/'.$follow_image->images)}}">
     </a>
   </div>
   @endforeach
@@ -17,8 +17,8 @@
     @foreach ($post as $post)
     <div class="timeline-wrapper">
       <div class="timeline-image">
-        <a href="{{asset('/profile')}}">
-          <img src="{{asset('images/'.$userimage)}}">
+        <a href="/post/{{ $post->user_id }}/profile">
+          <img src="{{asset('images/'.$post->images)}}">
         </a>
       </div>
       <div>

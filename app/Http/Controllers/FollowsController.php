@@ -15,12 +15,12 @@ class FollowsController extends Controller
     {
         //ログインid名
         $login_id = Auth::id();
-        //ログインidがfollowsテーブルのfollowerにいるfollowユーザーのimageを取得
+        //ログインidがfollowsテーブルのfollowerにいるfollowユーザーを取得
         $follow_image = DB::table('users')
             ->join('follows', 'users.id', 'follows.follow')
-            ->select('users.*', 'follows.*')
+            ->select('users.id', 'users.images', 'follows.follow')
             ->where('follower', $login_id)
-            ->pluck('users.images');
+            ->get();
         //dd($follow_image);
         //ログインidがfollowsテーブルのfollowerにいるfollowユーザーのidを取得
         $follow_id = DB::table('follows')
@@ -41,12 +41,12 @@ class FollowsController extends Controller
     {
         //ログインid名
         $login_id = Auth::id();
-        //ログインidがfollowsテーブルのfollowにいるfollowerユーザーのimageを取得
+        //ログインidがfollowsテーブルのfollowにいるfollowerユーザーを取得
         $follower_image = DB::table('users')
             ->join('follows', 'users.id', 'follows.follower')
             ->select('users.*', 'follows.*')
             ->where('follow', $login_id)
-            ->pluck('users.images');
+            ->get();
         //dd($follow_image);
         //ログインidがfollowsテーブルのfollowにいるfollowerユーザーのidを取得
         $follower_id = DB::table('follows')

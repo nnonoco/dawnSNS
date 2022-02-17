@@ -19,7 +19,7 @@
       @foreach ($post as $post)
       <div class="timeline-wrapper">
         <div class="timeline-image">
-          <img src="{{asset('images/'.$userimage)}}">
+          <img src="{{asset('images/'.$post->images)}}">
         </div>
         <div>
           <div class="timeline-name">

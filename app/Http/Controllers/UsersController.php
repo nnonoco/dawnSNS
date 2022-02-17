@@ -9,14 +9,20 @@ use Auth;
 class UsersController extends Controller
 {
     //
-    public function profile()
+    public function profile($id)
     {
         $post = DB::table('users')
             ->join('posts', 'users.id', 'posts.user_id')
-            ->select('posts.*', 'users.username', 'users.images')
+            ->select('posts.*', 'users.username', 'users.images', 'users.bio')
+            ->where('user_id', $id)
             ->latest()
             ->get();
-        return view('users.profile', ['post' => $post]);
+        //dd($post);
+        $user = DB::table('users')
+            ->where('id', $id)
+            ->first();
+        //dd($post_image);
+        return view('users.profile', ['post' => $post], ['user' => $user]);
     }
     public function search()
     {
@@ -30,6 +36,7 @@ class UsersController extends Controller
             ->get();
         //dd($follow);
         $result = DB::table('users')
+            ->where('id', '!=', $login_id)
             ->get();
         //dd($result);
         return view('users.search', ['result' => $result], ['follow' => $follow]);

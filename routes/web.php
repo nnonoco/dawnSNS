@@ -39,7 +39,7 @@ Route::get('/login-profile', 'PostsController@profile');
 
 Route::post('/login-profile/update', 'PostsController@update');
 //フォローフォロワーのプロフィール
-Route::get('/profile', 'UsersController@profile');
+Route::get('/post/{id}/profile', 'UsersController@profile');
 
 //検索ページ
 Route::get('/search', 'UsersController@search');

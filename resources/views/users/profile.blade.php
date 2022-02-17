@@ -5,9 +5,20 @@
 <div class="">
   <!--ユーザーアイコン-->
   <div class="">
+    <img src="{{asset('images/'.$user->images)}}">
   </div>
   <!--情報-->
   <div class="">
+    <!--名前-->
+    <div class="">
+      <p>Name</p>
+      <p>{{$user->username}}</p>
+    </div>
+    <!--自己紹介-->
+    <div class="">
+      <p>Bio</p>
+      <p>{{$user->bio}}</p>
+    </div>
   </div>
   <!--フォローボタン-->
 </div>
@@ -17,7 +28,7 @@
     @foreach ($post as $post)
     <div class="timeline-wrapper">
       <div class="timeline-image">
-        <img src="{{asset('images/'.$userimage)}}">
+        <img src="{{asset('images/'.$post->images)}}">
       </div>
       <div>
         <div class="timeline-name">

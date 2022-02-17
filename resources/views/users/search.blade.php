@@ -22,7 +22,7 @@
       <td><img src="{{asset('images/'.$userimage)}}"></td>
       <td>{{ $result->username }}</td>
       <!--フォローするボタン-->
-      @if(is_null( $result->id === $follow))
+      @if( $follow === $result->id)
       <td>
         <form action="/follow" method="POST">
           @csrf
