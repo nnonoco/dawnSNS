@@ -12,7 +12,6 @@
   <!--フォローボタン-->
 </div>
 <!--タイムライン-->
-<!--
 <div class="timeline">
   <div class="timeline-container">
     @foreach ($post as $post)
@@ -47,6 +46,5 @@
     @endforeach
   </div>
 </div>
--->
 
 @endsection

@@ -13,12 +13,53 @@ class FollowsController extends Controller
     //フォローリスト
     public function followList()
     {
-        return view('follows.followList');
+        //ログインid名
+        $login_id = Auth::id();
+        //ログインidがfollowsテーブルのfollowerにいるfollowユーザーのimageを取得
+        $follow_image = DB::table('users')
+            ->join('follows', 'users.id', 'follows.follow')
+            ->select('users.*', 'follows.*')
+            ->where('follower', $login_id)
+            ->pluck('users.images');
+        //dd($follow_image);
+        //ログインidがfollowsテーブルのfollowerにいるfollowユーザーのidを取得
+        $follow_id = DB::table('follows')
+            ->where('follower', $login_id)
+            ->pluck('follows.follow');
+        //dd($follow_id);
+        $post = DB::table('users')
+            ->join('posts', 'users.id', 'posts.user_id')
+            ->where('user_id', $follow_id)
+            ->select('posts.*', 'users.username', 'users.images')
+            ->get();
+        //dd($post);
+
+        return view('follows.followList', ['post' => $post], ['follow_image' => $follow_image]);
     }
     //フォロワーリスト
     public function followerList()
     {
-        return view('follows.followerList');
+        //ログインid名
+        $login_id = Auth::id();
+        //ログインidがfollowsテーブルのfollowにいるfollowerユーザーのimageを取得
+        $follower_image = DB::table('users')
+            ->join('follows', 'users.id', 'follows.follower')
+            ->select('users.*', 'follows.*')
+            ->where('follow', $login_id)
+            ->pluck('users.images');
+        //dd($follow_image);
+        //ログインidがfollowsテーブルのfollowにいるfollowerユーザーのidを取得
+        $follower_id = DB::table('follows')
+            ->where('follow', $login_id)
+            ->pluck('follows.follower');
+        //dd($follower_id);
+        $post = DB::table('users')
+            ->join('posts', 'users.id', 'posts.user_id')
+            ->select('posts.*', 'users.username', 'users.images')
+            ->where('user_id', $follower_id)
+            ->get();
+        dd($post);
+        return view('follows.followerList', ['post' => $post], ['follower_image' => $follower_image]);
     }
 
     //フォロー登録

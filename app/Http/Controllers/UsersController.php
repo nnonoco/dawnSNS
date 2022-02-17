@@ -11,35 +11,28 @@ class UsersController extends Controller
     //
     public function profile()
     {
-        return view('users.profile');
+        $post = DB::table('users')
+            ->join('posts', 'users.id', 'posts.user_id')
+            ->select('posts.*', 'users.username', 'users.images')
+            ->latest()
+            ->get();
+        return view('users.profile', ['post' => $post]);
     }
     public function search()
     {
         //ログインid名
         $login_id = Auth::id();
-        //表示されているid名
-        $current_id = DB::table('users')->pluck('id');
-        //dd($current_id);OK
-        //followsテーブルからログインidと表示されているidがあるidを取得
+        //dd($login_id);
+        //followsテーブルからfollowerカラムにログインidがあるfollowカラムのidを取得
         $follow = DB::table('follows')
-            ->where([
-                ['follow', '=', $current_id],
-                ['follower', '=', $login_id]
-            ])
-            ->pluck('id');
+            ->where('follower', $login_id)
+            ->select('follows.follow')
+            ->get();
         //dd($follow);
-        if (isset($follow)) {
-            $result = DB::table('users')
-                ->get();
-            $follow_relation = 'フォロー関係にある';
-            //dd($follow_relation);
-            return view('users.search', ['result' => $result], ['follow' => $follow_relation]);
-        } else {
-            $result = DB::table('users')
-                ->get();
-            //dd($result);
-            return view('users.search', ['result' => $result]);
-        }
+        $result = DB::table('users')
+            ->get();
+        //dd($result);
+        return view('users.search', ['result' => $result], ['follow' => $follow]);
     }
     public function result()
     {
