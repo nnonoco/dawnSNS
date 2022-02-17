@@ -28,6 +28,22 @@
           </div>
           <p class="timeline-post">{{ $post->posts }}</p>
         </div>
+        @if($username === $post->username)
+        <div class="">
+          <button type="button">
+            <a href="/post/{{ $post->id }}/update">
+              <img src="images/edit.png">
+            </a>
+          </button>
+        </div>
+        <div class="">
+          <button type="button">
+            <a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
+              <img src="images/trash_h.png">
+            </a>
+          </button>
+        </div>
+        @endif
       </div>
       @endforeach
     </div>

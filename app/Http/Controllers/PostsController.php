@@ -37,4 +37,12 @@ class PostsController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    public function delete($id)
+    {
+        DB::table('posts')
+            ->where('id', $id)
+            ->delete();
+        return redirect('/top');
+    }
 }
