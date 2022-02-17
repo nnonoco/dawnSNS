@@ -27,6 +27,7 @@ class PostsController extends Controller
         $post = DB::table('users')
             ->join('posts', 'users.id', 'posts.user_id')
             ->select('posts.*', 'users.username', 'users.images')
+            ->latest()
             ->get();
 
         return view('posts.index', ['post' => $post]);
@@ -44,5 +45,10 @@ class PostsController extends Controller
             ->where('id', $id)
             ->delete();
         return redirect('/top');
+    }
+
+    public function profile()
+    {
+        return view('posts.profile');
     }
 }

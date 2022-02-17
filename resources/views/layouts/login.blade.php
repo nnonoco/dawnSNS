@@ -46,7 +46,7 @@
       <nav class="g-nav">
         <ul>
           <li><a href="/top" class="nav-item">HOME</a></li>
-          <li><a href="/profile" class="nav-item">プロフィール編集</a></li>
+          <li><a href="/login-profile" class="nav-item">プロフィール編集</a></li>
           <li><a href="/logout" class="nav-item">ログアウト</a></li>
         </ul>
       </nav>

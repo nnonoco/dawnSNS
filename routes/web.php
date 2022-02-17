@@ -34,7 +34,9 @@ Route::get('/top', 'PostsController@index');
 
 Route::post('post/create', 'PostsController@create');
 
-//プロフィール
+//ログインユーザーのプロフィール
+Route::get('/login-profile', 'PostsController@profile');
+//フォローフォロワーのプロフィール
 Route::get('/profile', 'UsersController@profile');
 
 //検索ページ
