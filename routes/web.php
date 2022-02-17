@@ -34,15 +34,20 @@ Route::get('/top', 'PostsController@index');
 
 Route::post('post/create', 'PostsController@create');
 
+//プロフィール
 Route::get('/profile', 'UsersController@profile');
 
+//検索ページ
 Route::get('/search', 'UsersController@search');
 
 Route::post('/search/result', 'UsersController@result');
 
-Route::get('/follow-list', 'PostsController@index');
-Route::get('/follower-list', 'PostsController@index');
-//フォローする
+//フォローリスト
+Route::get('/follow-list', 'FollowsController@followList');
+//フォロワーリスト
+Route::get('/follower-list', 'FollowsController@followerList');
+
+//フォローする、削除する
 Route::post('/follow', 'FollowsController@follow');
 Route::post('/follow/delete', 'FollowsController@followDelete');
 //ログアウト

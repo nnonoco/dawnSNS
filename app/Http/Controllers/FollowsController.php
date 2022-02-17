@@ -10,16 +10,18 @@ use Illuminate\Support\Facades\DB;
 
 class FollowsController extends Controller
 {
-    //
+    //フォローリスト
     public function followList()
     {
         return view('follows.followList');
     }
+    //フォロワーリスト
     public function followerList()
     {
         return view('follows.followerList');
     }
 
+    //フォロー登録
     public function follow(Request $request)
     {
         $login_id = $_POST["loginId"];
@@ -35,6 +37,7 @@ class FollowsController extends Controller
         }
         return redirect('/search');
     }
+    //フォロー削除
     public function followDelete()
     {
         $login_id = $_POST["loginId"];

@@ -53,6 +53,7 @@
     </div>
   </header>
   <div id="row">
+    <!--メイン-->
     <div id="container">
       @yield('content')
     </div>
