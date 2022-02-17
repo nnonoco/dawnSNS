@@ -8,20 +8,20 @@
   </div>
   <!--情報-->
   <div class="">
-    <form class="">
-      <input type="hidden" name="" value="{{$id}}">
+    <form action="/login-profile/update" method="POST" class="">
+      <input type="hidden" name="id" value="{{$id}}">
       <label>UserName</label>
-      <input type="text" name="" class="" value="{{$username}}">
+      <input type="text" name="username" class="" value="{{$username}}">
       <label>MailAddress</label>
-      <input type="text" name="" class="" value="{{$user_address}}">
+      <input type="text" name="userAddress" class="" value="{{$user_address}}">
       <label>Password</label>
-      <input type="text" name="" class="" value="{{$password}}">
+      <input type="text" name="password" class="" value="{{$password}}">
       <label>new Password</label>
-      <input type="text" name="" class="" value="">
+      <input type="text" name="newPassword" class="" value="">
       <label>Bio</label>
-      <input type="text" name="" class="" value="{{$bio}}">
+      <input type="text" name="bio" class="" value="{{$bio}}">
       <label>Icon Image</label>
-      <input type="text" name="" class="" value="">
+      <input type="text" name="image" class="" value="">
       <!--ボタン-->
       <input type="submit" name="submit" class="" value="更新">
     </form>

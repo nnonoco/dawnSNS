@@ -36,6 +36,8 @@ Route::post('post/create', 'PostsController@create');
 
 //ログインユーザーのプロフィール
 Route::get('/login-profile', 'PostsController@profile');
+
+Route::post('/login-profile/update', 'PostsController@update');
 //フォローフォロワーのプロフィール
 Route::get('/profile', 'UsersController@profile');
 
