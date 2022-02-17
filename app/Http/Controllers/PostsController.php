@@ -49,6 +49,12 @@ class PostsController extends Controller
 
     public function profile()
     {
-        return view('posts.profile');
+        $user = Auth::user();
+        $user_address = $user['mail'];
+        //dd($user_address);
+        $password = $user['password'];
+        $bio = $user['bio'];
+        //dd($bio);
+        return view('posts.profile', ['user_address' => $user_address], ['password' => $password], ['bio' => $bio]);
     }
 }
