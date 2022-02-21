@@ -44,21 +44,23 @@ class FollowsController extends Controller
         //ログインidがfollowsテーブルのfollowにいるfollowerユーザーを取得
         $follower_image = DB::table('users')
             ->join('follows', 'users.id', 'follows.follower')
-            ->select('users.*', 'follows.*')
+            ->select('users.*')
             ->where('follow', $login_id)
             ->get();
         //dd($follow_image);
         //ログインidがfollowsテーブルのfollowにいるfollowerユーザーのidを取得
         $follower_id = DB::table('follows')
             ->where('follow', $login_id)
-            ->pluck('follows.follower');
+            ->select('follows.follower')
+            ->get()
+            ->toArray();
         //dd($follower_id);
         $post = DB::table('users')
             ->join('posts', 'users.id', 'posts.user_id')
             ->select('posts.*', 'users.username', 'users.images')
             ->where('user_id', $follower_id)
             ->get();
-        dd($post);
+        //dd($post);
         return view('follows.followerList', ['post' => $post], ['follower_image' => $follower_image]);
     }
 

@@ -54,8 +54,11 @@ class PostsController extends Controller
         //dd($user_address);
         $password = $user['password'];
         $bio = $user['bio'];
+        if (!isset($bio)) {
+            $bio = "自己紹介を入れてね。";
+        }
         //dd($bio);
-        return view('posts.profile', ['user_address' => $user_address], ['password' => $password], ['bio' => $bio]);
+        return view('posts.profile', compact('user_address', 'password', 'bio'));
     }
 
     public function update()
