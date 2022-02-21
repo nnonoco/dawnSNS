@@ -21,17 +21,7 @@
     <tr>
       <td><img src="{{asset('images/'.$userimage)}}"></td>
       <td>{{ $result->username }}</td>
-      <!--フォローするボタン-->
-      @if( $follow === $result->id)
-      <td>
-        <form action="/follow" method="POST">
-          @csrf
-          <input type="hidden" name="loginId" value="{{$id}}" class="login_name">
-          <input type="hidden" name="currentId" value="{{$result->id}}" class="current_name">
-          <input type="submit" class="follow_button" name="submit" value="フォローする">
-        </form>
-      </td>
-      @else
+      @if(in_array( $result->id,array_column($follow,'follow')))
       <!--フォロー中ボタン-->
       <td>
         <form action="/follow/delete" method="POST">
@@ -39,6 +29,16 @@
           <input type="hidden" name="loginId" value="{{$id}}" class="login_name">
           <input type="hidden" name="currentId" value="{{$result->id}}" class="current_name">
           <input type="submit" class="follow_button" name="submit" value="フォロー中">
+        </form>
+      </td>
+      @else
+      <!--フォローするボタン-->
+      <td>
+        <form action="/follow" method="POST">
+          @csrf
+          <input type="hidden" name="loginId" value="{{$id}}" class="login_name">
+          <input type="hidden" name="currentId" value="{{$result->id}}" class="current_name">
+          <input type="submit" class="follow_button" name="submit" value="フォローする">
         </form>
       </td>
       @endif

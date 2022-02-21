@@ -9,6 +9,7 @@
   <!--情報-->
   <div class="">
     <form action="/login-profile/update" method="POST" class="">
+      @csrf
       <input type="hidden" name="id" value="{{$id}}">
       <label>UserName</label>
       <input type="text" name="username" class="" value="{{$username}}">

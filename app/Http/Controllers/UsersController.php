@@ -33,11 +33,13 @@ class UsersController extends Controller
         $follow = DB::table('follows')
             ->where('follower', $login_id)
             ->select('follows.follow')
-            ->get();
+            ->get()
+            ->toArray();
         //dd($follow);
         $result = DB::table('users')
             ->where('id', '!=', $login_id)
-            ->get();
+            ->get()
+            ->toArray();
         //dd($result);
         return view('users.search', ['result' => $result], ['follow' => $follow]);
     }

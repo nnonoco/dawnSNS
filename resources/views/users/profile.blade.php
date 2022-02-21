@@ -21,6 +21,24 @@
     </div>
   </div>
   <!--フォローボタン-->
+  <!--フォローするボタン-->
+  <td>
+    <form action="/follow" method="POST">
+      @csrf
+      <input type="hidden" name="loginId" value="{{$id}}" class="login_name">
+      <input type="hidden" name="currentId" value="{{$user->id}}" class="current_name">
+      <input type="submit" class="follow_button" name="submit" value="フォローする">
+    </form>
+  </td>
+  <!--フォロー中ボタン-->
+  <td>
+    <form action="/follow/delete" method="POST">
+      @csrf
+      <input type="hidden" name="loginId" value="{{$id}}" class="login_name">
+      <input type="hidden" name="currentId" value="{{$user->id}}" class="current_name">
+      <input type="submit" class="follow_button" name="submit" value="フォロー中">
+    </form>
+  </td>
 </div>
 <!--タイムライン-->
 <div class="timeline">
