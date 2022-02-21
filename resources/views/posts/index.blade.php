@@ -31,7 +31,7 @@
         @if($username === $post->username)
         <div class="">
           <button type="button">
-            <a href="/post/{{ $post->id }}/update">
+            <a href="/post/{{ $post->id }}/update-form">
               <img src="images/edit.png">
             </a>
           </button>

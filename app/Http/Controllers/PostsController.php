@@ -39,6 +39,30 @@ class PostsController extends Controller
         return redirect('/login');
     }
 
+    public function updateForm($id)
+    {
+        $post = DB::table('posts')
+            ->where('id', $id)
+            ->first();
+        //dd($post);
+        return view('posts.update', compact('post'));
+    }
+
+    public function postUpdate(Request $request)
+    {
+        //dd($request);
+        $id = $request->input('id');
+        $up_post = $request->input('posts');
+        $updated_at = $request->input('update_at');
+        DB::table('posts')
+            ->where('id', $id)
+            ->update(
+                ['posts' => $up_post],
+                ['updated_at' => $updated_at]
+            );
+        return redirect('/top');
+    }
+
     public function delete($id)
     {
         DB::table('posts')
@@ -61,25 +85,25 @@ class PostsController extends Controller
         return view('posts.profile', compact('user_address', 'password', 'bio'));
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        $id = $_POST["id"];
-        $username = $_POST["username"];
-        $user_address = $_POST["userAddress"];
-        $password = $_POST["password"];
-        $new_password = $_POST["newPassword"];
-        $bio = $_POST["bio"];
-        $image = $_POST["image"];
+        //dd($request);
+        $id = $request->input('id');
+        $username = $request->input('username');
+        $user_address = $request->input('userAddress');
+        $new_password = $request->input('newPassword');
+        $bio = $request->input('bio');
+        $image = $request->input('image');
         DB::table('users')
-            ->where(['id', $id])
-            ->update([
-                'username' => $username,
-                'mail' => $user_address,
-                'password' => $new_password,
-                'bio' => $bio,
-                'images' => $image,
-                'updated_at' => now()
-            ]);
+            ->where('id', $id)
+            ->update(
+                ['username' => $username],
+                ['mail' => $user_address],
+                ['password' => $new_password],
+                ['bio' => $bio],
+                ['images' => $image],
+                ['updated_at' => now()]
+            );
 
         return redirect('/top');
     }

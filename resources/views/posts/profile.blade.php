@@ -8,7 +8,7 @@
   </div>
   <!--情報-->
   <div class="">
-    <form action="/login-profile/update" method="POST" class="">
+    <form action="/login-profile/update" method="get" class="">
       @csrf
       <input type="hidden" name="id" value="{{$id}}">
       <label>UserName</label>

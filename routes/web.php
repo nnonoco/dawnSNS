@@ -34,10 +34,17 @@ Route::get('/top', 'PostsController@index');
 
 Route::post('post/create', 'PostsController@create');
 
+//投稿変更画面
+Route::get('/post/{id}/update-form', 'PostsController@updateForm');
+
+Route::get('/post/update', 'PostsController@postUpdate');
+//投稿削除
+Route::get('/post/{id }/delete', 'PostsController@delete');
+
 //ログインユーザーのプロフィール
 Route::get('/login-profile', 'PostsController@profile');
 
-Route::post('/login-profile/update', 'PostsController@update');
+Route::get('/login-profile/update', 'PostsController@update');
 //フォローフォロワーのプロフィール
 Route::get('/post/{id}/profile', 'UsersController@profile');
 
