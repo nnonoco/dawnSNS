@@ -22,7 +22,7 @@
       <label>Bio</label>
       <input type="text" name="bio" class="" value="{{$bio}}">
       <label>Icon Image</label>
-      <input type="text" name="image" class="" value="">
+      <input type="text" name="image" class="" value="{{$userimage}}">
       <!--ボタン-->
       <input type="submit" name="submit" class="" value="更新">
     </form>

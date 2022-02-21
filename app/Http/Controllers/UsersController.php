@@ -21,8 +21,17 @@ class UsersController extends Controller
         $user = DB::table('users')
             ->where('id', $id)
             ->first();
-        //dd($post_image);
-        return view('users.profile', ['post' => $post], ['user' => $user]);
+        //ログインid名
+        $login_id = Auth::id();
+        //dd($login_id);
+        //followsテーブルからfollowerカラムにログインidがあるfollowカラムのidを取得
+        $follow = DB::table('follows')
+            ->where('follower', $login_id)
+            ->select('follows.follow')
+            ->get()
+            ->toArray();
+        //dd($follow);
+        return view('users.profile', compact('post', 'user', 'follow'));
     }
     public function search()
     {
