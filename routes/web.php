@@ -44,7 +44,7 @@ Route::get('/post/{id }/delete', 'PostsController@delete');
 //ログインユーザーのプロフィール
 Route::get('/login-profile', 'PostsController@profile');
 
-Route::get('/login-profile/update', 'PostsController@update');
+Route::post('/login-profile/update', 'PostsController@update');
 //フォローフォロワーのプロフィール
 Route::get('/post/{id}/profile', 'UsersController@profile');
 

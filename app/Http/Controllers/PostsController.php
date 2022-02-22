@@ -87,13 +87,16 @@ class PostsController extends Controller
 
     public function update(Request $request)
     {
+        //dd($_FILES);
         //dd($request);
         $id = $request->input('id');
         $username = $request->input('username');
         $user_address = $request->input('userAddress');
         $new_password = $request->input('newPassword');
         $bio = $request->input('bio');
-        $image = $request->input('image');
+        //$filename = $request->input('image');
+        $filename = $_FILES['image']['name'];
+        dd($filename);
         DB::table('users')
             ->where('id', $id)
             ->update(
@@ -101,10 +104,18 @@ class PostsController extends Controller
                 ['mail' => $user_address],
                 ['password' => $new_password],
                 ['bio' => $bio],
-                ['images' => $image],
+                ['images' => $filename],
                 ['updated_at' => now()]
             );
+        //dd($_FILES);
+        //画像があればローカルフォルダに保存
+        if (!empty($_FILES)) {
+            $filename = $_FILES['image']['name'];
 
+            $uploaded_path = 'images/' . $filename;
+
+            move_uploaded_file($_FILES['image']['tmp_name'], $uploaded_path);
+        }
         return redirect('/top');
     }
 }
