@@ -2,8 +2,64 @@
 
 html{
     height: 100%;
+    font-size: 62.5%;
 }
 body{
     height: 100%;
-    background: #3C4767;
+    background: linear-gradient(#3C4767,#DD563B);
+    color: #fff;
+    text-align: center;
+    font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+a {
+    color: #fff;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+}
+
+header{
+padding-top: 20rem;
+}
+
+.title{
+    font-size: 3rem;
+}
+
+.form{
+    background-color:rgba(50,59,86,0.6);
+    padding: 5rem;
+    margin: 5rem;
+    width: 30rem;
+}
+
+.login-title{
+    margin-bottom: 5rem;
+}
+
+.login-item{
+    margin-bottom: 2rem;
+}
+.label{
+text-align: left;
+}
+.login-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 30rem;
+}
+.btn{
+    background-color: #5963A2;
+    color: #fff;
+    padding: 1rem 2rem;
+}
+.btn-item{
+    text-align: right;
+    margin: 2rem;
 }
