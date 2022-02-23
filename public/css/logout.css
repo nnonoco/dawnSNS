@@ -24,42 +24,37 @@ a {
 }
 
 header{
-padding-top: 20rem;
+padding-top: 15rem;
 }
 
 .title{
     font-size: 3rem;
 }
-
 .form{
-    background-color:rgba(50,59,86,0.6);
-    padding: 5rem;
-    margin: 5rem;
-    width: 30rem;
+    background-color: rgba(50,59,86,0.6);
+    margin-top: 5rem;
+    padding: 2rem;
+    width: 25rem;
 }
-
-.login-title{
-    margin-bottom: 5rem;
-}
-
-.login-item{
+.form-title{
     margin-bottom: 2rem;
 }
 .label{
-text-align: left;
+    text-align: left;
 }
-.login-form{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 30rem;
+.input{
+    margin-bottom: 2rem;
+    width: 100%;
+    border-radius: 8px;
+    height: 3rem;
 }
 .btn{
-    background-color: #5963A2;
+    margin-bottom: 2rem;
+    text-align: right;
+}
+
+.submit{
+    background-color: #5862A2;
     color: #fff;
     padding: 1rem 2rem;
-}
-.btn-item{
-    text-align: right;
-    margin: 2rem;
 }
