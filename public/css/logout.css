@@ -55,3 +55,21 @@ a {
     color: #fff;
     padding: 1rem 2rem;
 }
+
+.login-submit{
+margin-bottom: 2rem;
+}
+.login-btn{
+    background-color: #5862A2;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+}
+
+.added{
+    margin-bottom: 2rem;
+}
+.added-text{
+    margin-bottom: 4rem;
+    text-align: left;
+    font-size: 1.2rem;
+}
