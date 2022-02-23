@@ -22,14 +22,16 @@
 </head>
 
 <body>
-  <section class="login-container">
-    <header>
-      <h1><img src="images/main_logo.png"></h1>
-    </header>
-    <div id="container">
-      @yield('content')
+  <div class="login-container">
+    <div>
+      <header>
+        <h1><img src="images/main_logo.png"></h1>
+      </header>
+      <div id="container">
+        @yield('content')
+      </div>
     </div>
-  </section>
+  </div>
   <script src="JavaScriptファイルのURL"></script>
   <script src="JavaScriptファイルのURL"></script>
 </body>
