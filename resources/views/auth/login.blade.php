@@ -1,7 +1,7 @@
 @extends('layouts.logout')
 
 @section('content')
-
+<p class="title">Social Network Service</p>
 {!! Form::open() !!}
 <div class="form">
   <p class="form-title">DAWNSNSへようこそ</p>
@@ -19,7 +19,7 @@
       {{ Form::password('password',['class' => 'input']) }}
     </div>
     <div class="btn">
-      {{ Form::submit('ログイン',['class'=> 'submit']) }}
+      {{ Form::submit('LOGIN',['class'=> 'submit']) }}
     </div>
   </div>
   <p><a href="/register">新規ユーザーの方はこちら</a></p>

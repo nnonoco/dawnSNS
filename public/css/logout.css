@@ -13,28 +13,19 @@ body{
   font-weight: 400;
   line-height: 1.75;
 }
-
 a {
     color: #fff;
 }
-
-#container{
-    display: flex;
-    justify-content: center;
-}
-
-header{
-padding-top: 15rem;
-}
-
 .title{
     font-size: 3rem;
+    margin-bottom: 3rem;
 }
 .form{
     background-color: rgba(50,59,86,0.6);
     margin-top: 5rem;
     padding: 2rem;
     width: 25rem;
+    margin: 0 auto;
 }
 .form-title{
     margin-bottom: 2rem;

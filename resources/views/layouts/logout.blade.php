@@ -22,13 +22,14 @@
 </head>
 
 <body>
-  <header>
-    <h1><img src="images/main_logo.png"></h1>
-    <p class="title">Social Network Service</p>
-  </header>
-  <div id="container">
-    @yield('content')
-  </div>
+  <section class="login-container">
+    <header>
+      <h1><img src="images/main_logo.png"></h1>
+    </header>
+    <div id="container">
+      @yield('content')
+    </div>
+  </section>
   <script src="JavaScriptファイルのURL"></script>
   <script src="JavaScriptファイルのURL"></script>
 </body>
