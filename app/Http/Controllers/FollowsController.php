@@ -18,19 +18,25 @@ class FollowsController extends Controller
         //ログインidがfollowsテーブルのfollowerにいるfollowユーザーを取得
         $follow_image = DB::table('users')
             ->join('follows', 'users.id', 'follows.follow')
-            ->select('users.id', 'users.images', 'follows.follow')
+            ->select('users.*')
             ->where('follower', $login_id)
             ->get();
         //dd($follow_image);
         //ログインidがfollowsテーブルのfollowerにいるfollowユーザーのidを取得
-        $follow_id = DB::table('follows')
+        $follow = DB::table('follows')
             ->where('follower', $login_id)
-            ->pluck('follows.follow');
+            ->select('follows.follow')
+            ->get()
+            ->toArray();
+        //$followに連想配列
+        //dd($follow);
+        $follow_id = array_column($follow, 'follow');
+        //連想配列を単一に
         //dd($follow_id);
         $post = DB::table('users')
             ->join('posts', 'users.id', 'posts.user_id')
-            ->where('user_id', $follow_id)
             ->select('posts.*', 'users.username', 'users.images')
+            ->where('user_id', $follow_id)
             ->get();
         //dd($post);
 
@@ -49,11 +55,15 @@ class FollowsController extends Controller
             ->get();
         //dd($follow_image);
         //ログインidがfollowsテーブルのfollowにいるfollowerユーザーのidを取得
-        $follower_id = DB::table('follows')
+        $follower = DB::table('follows')
             ->where('follow', $login_id)
             ->select('follows.follower')
             ->get()
             ->toArray();
+        //$followに連想配列
+        //dd($follower);
+        $follower_id = array_column($follower, 'follow');
+        //連想配列を単一に
         //dd($follower_id);
         $post = DB::table('users')
             ->join('posts', 'users.id', 'posts.user_id')
