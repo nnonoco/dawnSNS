@@ -63,7 +63,7 @@ header{
 
 .menu img {
     margin: 0 2rem;
-    border-radius: 3px;
+    border-radius: 50%;
 }
 
 /* プルダウン */
@@ -173,8 +173,13 @@ border-bottom: solid 3px #fff;
     display: flex;
     align-items: flex-end;
     border-bottom: 2px solid gray;
-    padding: 1rem;
+    padding: 2rem 1rem;
     width: auto;
+}
+.post-wrapper img{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
 }
 input.form-control {
     height: 5rem;
@@ -193,11 +198,19 @@ input.form-control {
 /*　タイムライン　*/
 .timeline-wrapper {
     border-bottom: 1px solid gray;
-    padding: 2rem;
+    padding: 2rem 4rem;
     display: flex;
 }
 .timeline-image {
-    margin-right: 2rem;
+    width: 10%;
+}
+.timeline-image img{
+border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+.timeline-item{
+    width: 90%;
 }
 .timeline-name {
     display: flex;
@@ -208,4 +221,46 @@ input.form-control {
 }
 .timeline-post {
     margin: 2rem 0;
+}
+.icon{
+    display: flex;
+    justify-content: right;
+}
+.update-icon a img{
+    height: 40px;
+    width: 40px;
+    margin-right: 1rem;
+}
+.delete-icon a img{
+    height: 40px;
+    width: 40px;
+}
+.delete-icon a{
+    display:block;
+    background-image: url("images/trash.png") no-repeat left top;
+    height: 40px;
+    width: 40px;
+}
+.delete-icon a:hover{
+    display:block;
+    background-image: url("images/trash.png") no-repeat left top;
+    height: 40px;
+    width: 40px;
+    text-indent:-240px;
+    overflow: hidden;
+}
+
+p .btn_A a {
+display:block;
+height:80px;
+width:240px;
+background:url(../images/bottan_B.jpg) no-repeat left top;
+}
+p .btn_A a:hover {
+display:block;
+height:80px;
+width:240px;
+text-indent:-240px;
+background:url(../images/bottan_B.jpg) no-repeat left top;
+overflow:hidden;
 }

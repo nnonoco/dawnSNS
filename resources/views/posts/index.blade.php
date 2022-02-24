@@ -21,29 +21,27 @@
         <div class="timeline-image">
           <img src="{{asset('images/'.$post->images)}}">
         </div>
-        <div>
+        <div class="timeline-item">
           <div class="timeline-name">
             <p class="username">{{ $post->username }}</p>
             <p class="created-at">{{ $post->created_at }}</p>
           </div>
           <p class="timeline-post">{{ $post->posts }}</p>
+          @if($username === $post->username)
+          <div class="icon">
+            <div class="update-icon">
+              <a href="/post/{{ $post->id }}/update-form">
+                <img src="images/edit.png">
+              </a>
+            </div>
+            <div class="delete-icon">
+              <a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
+                <img src="images/trash_h.png">
+              </a>
+            </div>
+          </div>
+          @endif
         </div>
-        @if($username === $post->username)
-        <div class="">
-          <button type="button">
-            <a href="/post/{{ $post->id }}/update-form">
-              <img src="images/edit.png">
-            </a>
-          </button>
-        </div>
-        <div class="">
-          <button type="button">
-            <a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
-              <img src="images/trash_h.png">
-            </a>
-          </button>
-        </div>
-        @endif
       </div>
       @endforeach
     </div>
