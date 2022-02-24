@@ -96,7 +96,7 @@ class PostsController extends Controller
         $bio = $request->input('bio');
         //$filename = $request->input('image');
         $filename = $_FILES['image']['name'];
-        dd($filename);
+        //dd($filename);
         DB::table('users')
             ->where('id', $id)
             ->update(
