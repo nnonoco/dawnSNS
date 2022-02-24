@@ -249,7 +249,7 @@ border-radius: 50%;
     text-indent:-240px;
     overflow: hidden;
 }
-
+/*参考
 p .btn_A a {
 display:block;
 height:80px;
@@ -263,4 +263,23 @@ width:240px;
 text-indent:-240px;
 background:url(../images/bottan_B.jpg) no-repeat left top;
 overflow:hidden;
+}
+*/
+
+/*フォローリスト*/
+.follow-list{
+    padding: 2rem 4rem;
+    border-bottom: 2px solid gray;
+}
+.follow-list h2{
+    font-size: 3rem;
+}
+.follow-icon{
+    padding: 2rem 4rem 2rem 6rem;
+}
+.follow-icon a img{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    margin: 0 2rem 2rem 0;
 }
