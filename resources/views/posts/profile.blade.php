@@ -21,7 +21,7 @@
       </div>
       <div class="profile-item">
         <label>Password</label>
-        <input type="password" name="password" class="profile-box" value="{{$password}}">
+        <input type="password" name="password" class="profile-box" readonly value="{{$password}}">
       </div>
       <div class="profile-item">
         <label>new Password</label>

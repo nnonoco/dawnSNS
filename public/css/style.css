@@ -180,6 +180,7 @@ border-bottom: solid 3px #fff;
     border-radius: 50%;
     height: 60px;
     width: 60px;
+    margin-right: 1rem;
 }
 input.form-control {
     height: 5rem;
@@ -237,16 +238,16 @@ border-radius: 50%;
 }
 .delete-icon a{
     display:block;
-    background-image: url("images/trash.png") no-repeat left top;
     height: 40px;
     width: 40px;
+    background-image: url("../images/trash.png") no-repeat left top;
 }
 .delete-icon a:hover{
     display:block;
-    background-image: url("images/trash.png") no-repeat left top;
     height: 40px;
     width: 40px;
-    text-indent:-240px;
+    text-indent:-40px;
+    background-image: url("../images/trash.png") no-repeat left top;
     overflow: hidden;
 }
 /*参考
@@ -344,6 +345,8 @@ padding: 2rem 6rem;
     background-color: #B95656;
     border: none;
     padding: 1rem 0;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .follow_button{
     color: #fff;
@@ -351,6 +354,8 @@ padding: 2rem 6rem;
     background-color: #7F9BD9;
     border: none;
     padding: 1rem 0;
+     border-radius: 5px;
+     cursor: pointer;
 }
 /*プロフィール編集*/
 .profile{
@@ -407,4 +412,34 @@ padding: 2rem 6rem;
 }
 .profile-btn{
     text-align: center;
+}
+/*他のユーザーのプロフィール*/
+.current{
+    border-bottom: 2px solid gray;
+    display: flex;
+    padding: 4rem 10rem;
+}
+.current_icon{
+    width: 10%;
+}
+.current_icon img{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+.current-profile{
+    width: 70%;
+    font-size: 2rem;
+}
+.current-item{
+    display: flex;
+    padding-bottom: 2rem;
+}
+.current-label{
+    width: 20%;
+}
+.current-btn{
+    width: 20%;
+    display: flex;
+    align-items: flex-end;
 }

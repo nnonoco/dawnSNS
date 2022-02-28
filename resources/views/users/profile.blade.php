@@ -2,27 +2,27 @@
 
 @section('content')
 <!--自己紹介-->
-<div class="">
+<div class="current">
   <!--ユーザーアイコン-->
-  <div class="">
+  <div class="current_icon">
     <img src="{{asset('images/'.$user->images)}}">
   </div>
   <!--情報-->
-  <div class="">
+  <div class="current-profile">
     <!--名前-->
-    <div class="">
-      <p>Name</p>
+    <div class="current-item">
+      <p class="current-label">Name</p>
       <p>{{$user->username}}</p>
     </div>
     <!--自己紹介-->
-    <div class="">
-      <p>Bio</p>
+    <div class="current-item">
+      <p class="current-label">Bio</p>
       <p>{{$user->bio}}</p>
     </div>
   </div>
   @if(in_array( $user->id,array_column($follow,'follow')))
   <!--フォロー中ボタン-->
-  <div>
+  <div class="current-btn">
     <form action="/follow/delete" method="POST">
       @csrf
       <input type="hidden" name="loginId" value="{{$id}}" class="login_name">
@@ -32,7 +32,7 @@
   </div>
   @else
   <!--フォローするボタン-->
-  <div>
+  <div class="current-btn">
     <form action="/follow" method="POST">
       @csrf
       <input type="hidden" name="loginId" value="{{$id}}" class="login_name">
@@ -50,29 +50,27 @@
       <div class="timeline-image">
         <img src="{{asset('images/'.$post->images)}}">
       </div>
-      <div>
+      <div class="timeline-item">
         <div class="timeline-name">
           <p class="username">{{ $post->username }}</p>
           <p class="created-at">{{ $post->created_at }}</p>
         </div>
         <p class="timeline-post">{{ $post->posts }}</p>
+        @if($username === $post->username)
+        <div class="icon">
+          <div class="update-icon">
+            <a href="/post/{{ $post->id }}/update">
+              <img src="images/edit.png">
+            </a>
+          </div>
+          <div class="delete-icon">
+            <a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
+              <img src="images/trash_h.png">
+            </a>
+          </div>
+        </div>
+        @endif
       </div>
-      @if($username === $post->username)
-      <div class="">
-        <button type="button">
-          <a href="/post/{{ $post->id }}/update">
-            <img src="images/edit.png">
-          </a>
-        </button>
-      </div>
-      <div class="">
-        <button type="button">
-          <a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
-            <img src="images/trash_h.png">
-          </a>
-        </button>
-      </div>
-      @endif
     </div>
     @endforeach
   </div>

@@ -92,17 +92,23 @@ class PostsController extends Controller
         $id = $request->input('id');
         $username = $request->input('username');
         $user_address = $request->input('userAddress');
+        $password = $request->input('password');
         $new_password = $request->input('newPassword');
         $bio = $request->input('bio');
         //$filename = $request->input('image');
         $filename = $_FILES['image']['name'];
         //dd($filename);
+        if (isset($nes_password)) {
+            $pass = $new_password;
+        } else {
+            $pass = $password;
+        }
         DB::table('users')
             ->where('id', $id)
             ->update(
                 ['username' => $username],
                 ['mail' => $user_address],
-                ['password' => $new_password],
+                ['password' => $pass],
                 ['bio' => $bio],
                 ['images' => $filename],
                 ['updated_at' => now()]

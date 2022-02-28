@@ -54,11 +54,22 @@ class UsersController extends Controller
     }
     public function result()
     {
+        //ログインid名
+        $login_id = Auth::id();
+        //dd($login_id);
+        //followsテーブルからfollowerカラムにログインidがあるfollowカラムのidを取得
+        $follow = DB::table('follows')
+            ->where('follower', $login_id)
+            ->select('follows.follow')
+            ->get()
+            ->toArray();
+        //dd($follow);
         $search_username = $_POST["searchName"];
         $result = DB::table('users')
             ->where('username', 'like', '%' . $search_username . '%')
-            ->get();
+            ->get()
+            ->toArray();
 
-        return view('users.search', ['search_username' => $search_username], ['result' => $result]);
+        return view('users.search', compact('search_username', 'result', 'follow'));
     }
 }
