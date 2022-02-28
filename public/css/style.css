@@ -105,31 +105,30 @@ header{
 .menu-trigger span{
     display: block;
     position: absolute;
-    width: 3rem;
+    width: 1.7rem;
 border-bottom: solid 3px #fff;
     border-radius: 3px;
     transition: .35s ease-in-out;
 }
 .menu-trigger span:nth-child(1) {
-    top: 0.6rem;
+    top: 2rem;
+    left: 1rem;
+    transform: rotate(-45deg);
   }
   .menu-trigger span:nth-child(2) {
-    top: 1.8rem;
+    top: 2rem;
+    transform: rotate(45deg);
   }
-  .menu-trigger span:nth-child(3) {
-    top: 3rem;
-  }
-  /* 1番上のspan要素をマイナス45度方向に回す */
+  /* 1番上のspan要素を45度方向に回す */
 .menu-trigger.active span:nth-child(1) {
-    top: 18px;
-    transform: rotate(-45deg);
+    top: 2rem;
+    transform: rotate(45deg);
 }
 
-/* 2番目と3番目のspan要素を45度方向に回す */
-.menu-trigger.active span:nth-child(2),
-.menu-trigger.active span:nth-child(3) {
-    top: 18px;
-    transform: rotate(45deg);
+/* 2番目のspan要素を-45度方向に回す */
+.menu-trigger.active span:nth-child(2){
+    top: 2rem;
+    transform: rotate(-45deg);
 }
 
 /* サイドバー */
@@ -232,37 +231,39 @@ border-radius: 50%;
     justify-content: right;
 }
 .update-icon{
-    height: 55px;
-    width: 55px;
+    height: 40px;
+    width: 40px;
      margin-right: 1rem;
 }
 
 .update-icon a img{
-    height: 55px;
-    width: 55px;
+    height: 40px;
+    width: 40px;
     margin-right: 1rem;
 }
 .delete-icon{
-    height: 55px;
-    width: 55px;
+    height: 40px;
+    width: 40px;
 }
 .delete-icon a img{
-    height: 55px;
-    width: 55px;
+    height: 40px;
+    width: 40px;
 }
 .delete-icon a{
     display:block;
-    height: 55px;
-    width: 55px;
+    height: 40px;
+    width: 40px;
     background: url("../images/trash.png") no-repeat left top;
+    background-size: 40px 40px;
 }
 .delete-icon a:hover{
     display:block;
-    height: 55px;
-    width: 55px;
+    height: 40px;
+    width: 40px;
     text-indent:-55px;
     background: url("../images/trash.png") no-repeat left top;
     overflow: hidden;
+    background-size: 40px 40px;
 }
 
 /*編集画面*/
@@ -299,7 +300,6 @@ border-radius: 50%;
     width: 100%;
     height: 70%;
     margin-bottom: 1rem;
-    display:inline-block;
     vertical-align: top;
 }
 /*フォローリスト*/

@@ -37,7 +37,6 @@
           <div class="menu-trigger">
             <span></span>
             <span></span>
-            <span></span>
           </div>
           <img src="{{asset('images/'.$userimage)}}">
         </div>
