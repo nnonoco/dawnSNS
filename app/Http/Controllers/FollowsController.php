@@ -38,7 +38,7 @@ class FollowsController extends Controller
             ->where('user_id', $follow_id)
             ->select('posts.*', 'users.username', 'users.images')
             ->get();
-        dd($post);
+        //dd($post);
 
         return view('follows.followList', ['post' => $post], ['follow_image' => $follow_image]);
     }
