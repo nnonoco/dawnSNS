@@ -41,11 +41,17 @@ class PostsController extends Controller
 
     public function updateForm($id)
     {
-        $post = DB::table('posts')
+        $post = DB::table('users')
+            ->join('posts', 'users.id', 'posts.user_id')
+            ->select('posts.*', 'users.username', 'users.images')
+            ->latest()
+            ->get();
+
+        $update_post = DB::table('posts')
             ->where('id', $id)
             ->first();
         //dd($post);
-        return view('posts.update', compact('post'));
+        return view('posts.index', compact('update_post', 'post'));
     }
 
     public function postUpdate(Request $request)

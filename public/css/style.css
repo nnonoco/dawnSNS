@@ -175,6 +175,7 @@ border-bottom: solid 3px #fff;
     border-bottom: 2px solid gray;
     padding: 2rem 1rem;
     width: auto;
+    height: 7rem;
 }
 .post-wrapper img{
     border-radius: 50%;
@@ -187,10 +188,12 @@ input.form-control {
     vertical-align: top;
     border: solid 0px;
     width: 100%;
+    height: 100%;
 }
 .post-item {
     margin: 0 1rem;
     width: 70%;
+    height: 100%;
 }
 .submit {
     height: 3rem;
@@ -223,50 +226,82 @@ border-radius: 50%;
 .timeline-post {
     margin: 2rem 0;
 }
+/*編集・デリートアイコン*/
 .icon{
     display: flex;
     justify-content: right;
 }
+.update-icon{
+    height: 55px;
+    width: 55px;
+     margin-right: 1rem;
+}
+
 .update-icon a img{
-    height: 40px;
-    width: 40px;
+    height: 55px;
+    width: 55px;
     margin-right: 1rem;
 }
+.delete-icon{
+    height: 55px;
+    width: 55px;
+}
 .delete-icon a img{
-    height: 40px;
-    width: 40px;
+    height: 55px;
+    width: 55px;
 }
 .delete-icon a{
     display:block;
-    height: 40px;
-    width: 40px;
-    background-image: url("../images/trash.png") no-repeat left top;
+    height: 55px;
+    width: 55px;
+    background: url("../images/trash.png") no-repeat left top;
 }
 .delete-icon a:hover{
     display:block;
-    height: 40px;
-    width: 40px;
-    text-indent:-40px;
-    background-image: url("../images/trash.png") no-repeat left top;
+    height: 55px;
+    width: 55px;
+    text-indent:-55px;
+    background: url("../images/trash.png") no-repeat left top;
     overflow: hidden;
 }
-/*参考
-p .btn_A a {
-display:block;
-height:80px;
-width:240px;
-background:url(../images/bottan_B.jpg) no-repeat left top;
-}
-p .btn_A a:hover {
-display:block;
-height:80px;
-width:240px;
-text-indent:-240px;
-background:url(../images/bottan_B.jpg) no-repeat left top;
-overflow:hidden;
-}
-*/
 
+/*編集画面*/
+.update{
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    background-color: rgba( 128, 128, 128, 0.3 );
+}
+.update_form{
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    background-color: #fff;
+    width: 50%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 3rem;
+}
+.update form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+}
+.update_submit{
+    width: 3rem;
+    margin-right: 2rem;
+}
+
+.update_post{
+    width: 100%;
+    height: 70%;
+    margin-bottom: 1rem;
+    display:inline-block;
+    vertical-align: top;
+}
 /*フォローリスト*/
 .follow-list{
     padding: 2rem 4rem;

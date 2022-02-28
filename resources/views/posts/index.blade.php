@@ -10,7 +10,7 @@
     <div class="post-item">
       {{ Form::input('text','newPosts',null,['class' => 'form-control','placeholder'=>'何をつぶやこうか…？'])}}
     </div>
-    <input type="image" class="submit" name="submit" src="images/post.png" alt="送信">
+    <input type="image" class="submit" name="submit" src="{{asset('images/post.png')}}" alt="送信">
     {!! Form::close() !!}
   </div>
   <!--タイムライン-->
@@ -31,12 +31,12 @@
           <div class="icon">
             <div class="update-icon">
               <a href="/post/{{ $post->id }}/update-form">
-                <img src="images/edit.png">
+                <img src="{{asset('images/edit.png')}}">
               </a>
             </div>
             <div class="delete-icon">
               <a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
-                <img src="images/trash_h.png">
+                <img src="{{asset('images/trash_h.png')}}">
               </a>
             </div>
           </div>
@@ -46,5 +46,18 @@
       @endforeach
     </div>
   </div>
+  @if(isset($update_post))
+  <!--編集画面-->
+  <div class="update">
+    <div class="update_form">
+      <form action="/post/update" method="GET">
+        <input type="hidden" name="id" value="{{$update_post->id}}">
+        <input type="text" name="posts" class="update_post" value="{{$update_post->posts}}">
+        <input type="hidden" name="updated_at" value="{{$update_post->updated_at}}">
+        <input type="image" class="update_submit" name="submit" src="{{asset('images/edit.png')}}" alt="送信">
+      </form>
+    </div>
+  </div>
+  @endif
 </div>
 @endsection
