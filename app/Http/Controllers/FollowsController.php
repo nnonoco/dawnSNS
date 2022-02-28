@@ -35,10 +35,10 @@ class FollowsController extends Controller
         //dd($follow_id);
         $post = DB::table('users')
             ->join('posts', 'users.id', 'posts.user_id')
-            ->select('posts.*', 'users.username', 'users.images')
             ->where('user_id', $follow_id)
+            ->select('posts.*', 'users.username', 'users.images')
             ->get();
-        //dd($post);
+        dd($post);
 
         return view('follows.followList', ['post' => $post], ['follow_image' => $follow_image]);
     }
