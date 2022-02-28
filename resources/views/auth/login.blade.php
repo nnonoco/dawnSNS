@@ -10,13 +10,13 @@
       {{ Form::label('MAilAddress') }}
     </div>
     <div>
-      {{ Form::text('mail',null,['class' => 'input']) }}
+      {{ Form::text('mail',null,['class' => 'input','required']) }}
     </div>
     <div class="label">
       {{ Form::label('password') }}
     </div>
     <div>
-      {{ Form::password('password',['class' => 'input']) }}
+      {{ Form::password('password',['class' => 'input','required']) }}
     </div>
     <div class="btn">
       {{ Form::submit('LOGIN',['class'=> 'submit']) }}

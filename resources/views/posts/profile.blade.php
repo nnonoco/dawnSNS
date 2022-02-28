@@ -13,15 +13,15 @@
       <input type="hidden" name="id" value="{{$id}}">
       <div class="profile-item">
         <label>UserName</label>
-        <input type="text" name="username" class="profile-box" value="{{$username}}">
+        <input type="text" name="username" class="profile-box" value="{{$username}}" required>
       </div>
       <div class="profile-item">
         <label>MailAddress</label>
-        <input type="text" name="userAddress" class="profile-box" value="{{$user_address}}">
+        <input type="text" name="userAddress" class="profile-box" value="{{$user_address}}" required>
       </div>
       <div class="profile-item">
         <label>Password</label>
-        <input type="password" name="password" class="profile-box" readonly value="{{$password}}">
+        <input type="password" name="password" class="profile-box" readonly value="{{$password}}" required>
       </div>
       <div class="profile-item">
         <label>new Password</label>

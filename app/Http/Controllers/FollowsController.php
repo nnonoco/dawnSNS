@@ -63,13 +63,13 @@ class FollowsController extends Controller
             ->toArray();
         //$followに連想配列
         //dd($follower);
-        $follower_id = array_column($follower, 'follow');
+        $follower_id = array_column($follower, 'follower');
         //連想配列を単一に
         //dd($follower_id);
         $post = DB::table('users')
             ->join('posts', 'users.id', 'posts.user_id')
-            ->select('posts.*', 'users.username', 'users.images')
             ->whereIn('user_id', $follower_id)
+            ->select('posts.*', 'users.username', 'users.images')
             ->latest()
             ->get();
         //dd($post);
