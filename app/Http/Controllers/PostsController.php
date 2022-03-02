@@ -105,22 +105,31 @@ class PostsController extends Controller
         //$filename = $request->input('image');
         $filename = $_FILES['image']['name'];
         //dd($filename);
-        if (isset($new_password)) {
-            $pass = $new_password;
-        } else {
-            $pass = $password;
+        if (!empty($new_password)) {
+            DB::table('users')
+                ->where('id', $id)
+                ->update([
+                    'password' => $new_password
+                ]);
         }
         //dd($pass);
         DB::table('users')
             ->where('id', $id)
             ->update(
-                ['username' => $username],
-                ['mail' => $user_address],
-                ['password' => $pass],
-                ['bio' => $bio],
-                ['images' => $filename],
-                ['updated_at' => now()]
+                [
+                    'username' => $username,
+                    'mail' => $user_address,
+                    'bio' => $bio,
+                    'updated_at' => now()
+                ]
             );
+        if (!empty($filename)) {
+            DB::table('users')
+                ->where('id', $id)
+                ->update([
+                    'images' => $filename
+                ]);
+        }
         //dd($_FILES);
         //画像があればローカルフォルダに保存
         if (!empty($_FILES)) {

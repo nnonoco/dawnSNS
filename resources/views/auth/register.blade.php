@@ -11,25 +11,28 @@
       {{ Form::label('UserName') }}
     </div>
     <div>
-      {{ Form::text('username',null,['required','class' => 'input']) }}
+      {{ Form::text('username',null,['class' => 'input']) }}
     </div>
+    @if($errors->has('username'))
+    {{$errors->first('username')}}
+    @endif
     <div class="label">
       {{ Form::label('MailAddress') }}
     </div>
     <div>
-      {{ Form::text('mail',null,['required','class' => 'input']) }}
+      {{ Form::text('mail',null,['class' => 'input']) }}
     </div>
     <div class="label">
       {{ Form::label('Password') }}
     </div>
     <div>
-      {{ Form::input('password','password',null,['required','class' => 'input']) }}
+      {{ Form::input('password','password',null,['class' => 'input']) }}
     </div>
     <div class="label">
       {{ Form::label('Password confirm') }}
     </div>
     <div>
-      {{ Form::input('password','password-confirm',null,['required','class' => 'input']) }}
+      {{ Form::input('password','password-confirm',null,['class' => 'input']) }}
     </div>
     <div class="btn">
       {{ Form::submit('REGISTER',['class'=> 'submit']) }}

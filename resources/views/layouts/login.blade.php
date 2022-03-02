@@ -38,7 +38,9 @@
             <span></span>
             <span></span>
           </div>
-          <img src="{{asset('images/'.$userimage)}}">
+          <div class="login-user-icon">
+            <img src="{{asset('images/'.$userimage)}}">
+          </div>
         </div>
       </nav>
       <!--プルダウン-->

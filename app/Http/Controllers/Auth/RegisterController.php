@@ -52,7 +52,10 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'username' => 'required|string|max:255',
             'mail' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:4|confirmed',
+            'password' => 'required|string|min:4',
+            'password-confirm' => 'required|same:password'
+        ], [
+            'username.required' => '入力必須項目です。',
         ]);
     }
 
@@ -78,16 +81,24 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $password = $request->input('password');
-        $password_confirm = $request->input('password-confirm');
+        //$password = $request->input('password');
+        //$password_confirm = $request->input('password-confirm');
         //dd($password);
-        if ($password !== $password_confirm) {
-            echo "パスワードが一致しません。";
-        } else if ($request->isMethod('post')) {
+        //if ($password !== $password_confirm) {
+        //  echo "パスワードが一致しません。";
+        if ($request->isMethod('post')) {
             $data = $request->input();
 
-            $this->create($data);
-            return redirect('/added');
+            $validator = $this->validator($data);
+
+            if ($validator->fails()) {
+                return redirect('/register')
+                    ->withErrors($validator)
+                    ->withInput();
+            } else {
+                $this->create($data);
+                return redirect('/added');
+            }
         }
         return view('auth.register');
     }

@@ -21,7 +21,7 @@
   <table class="">
     @foreach($result as $result)
     <tr class="search-item">
-      <td class="search-image"><img src="{{asset('images/'.$userimage)}}"></td>
+      <td class="search-image"><img src="{{asset('images/'.$result->images)}}"></td>
       <td class="search-username">{{ $result->username }}</td>
       @if(in_array( $result->id,array_column($follow,'follow')))
       <!--フォロー中ボタン-->
