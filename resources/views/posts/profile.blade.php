@@ -13,28 +13,62 @@
       <input type="hidden" name="id" value="{{$id}}">
       <div class="profile-item">
         <label>UserName</label>
-        <input type="text" name="username" class="profile-box" value="{{$username}}" required>
+        <input type="text" name="username" class="profile-box" value="{{$username}}">
+        <!--エラー文-->
+        @if($errors->has('username'))
+        <div class="error">
+          {{$errors->first('username')}}
+        </div>
+        @endif
       </div>
       <div class="profile-item">
         <label>MailAddress</label>
-        <input type="text" name="userAddress" class="profile-box" value="{{$user_address}}" required>
+        <input type="text" name="mail" class="profile-box" value="{{$user_address}}">
       </div>
+      <!--エラー文-->
+      @if($errors->has('mail'))
+      <div class="error">
+        {{$errors->first('mail')}}
+      </div>
+      @endif
+
       <div class="profile-item">
         <label>Password</label>
-        <input type="password" name="password" class="profile-box" readonly value="{{$password}}" required>
+        <input type="password" name="oldPassword" class="profile-box" readonly value="{{$password}}">
       </div>
       <div class="profile-item">
         <label>new Password</label>
-        <input type="password" name="newPassword" class="profile-box" value="">
+        <input type="password" name="password" class="profile-box">
       </div>
+      <!--エラー文-->
+      @if($errors->has('password'))
+      <div class="error">
+        {{$errors->first('password')}}
+      </div>
+      @endif
+
       <div class="profile-item">
         <label>Bio</label>
-        <input type="text" name="bio" class="profile-bio" value="{{$bio}}">
+        <input type="text" name="bio" class="profile-bio" value="{{$bio}}" placeholder="自己紹介をいれてね">
       </div>
+      <!--エラー文-->
+      @if($errors->has('bio'))
+      <div class="error">
+        {{$errors->first('bio')}}
+      </div>
+      @endif
+
       <div class="profile-item">
         <label>Icon Image</label>
         <input type="file" name="image" class="profile-img">
       </div>
+      <!--エラー文-->
+      @if($errors->has('image'))
+      <div class="error">
+        {{$errors->first('image')}}
+      </div>
+      @endif
+
       <!--ボタン-->
       <div class="profile-btn">
         <input type="submit" name="submit" class="profile-submit" value="更新">

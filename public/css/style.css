@@ -485,3 +485,9 @@ padding: 2rem 6rem;
     display: flex;
     align-items: flex-end;
 }
+
+.error{
+    text-align: center;
+    background-color: yellow;
+    margin-bottom: 2rem;
+}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PostsController extends Controller
 {
@@ -20,6 +21,40 @@ class PostsController extends Controller
 
 
         return redirect('/top');
+    }
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'username' => 'required|string|min:4|max:255',
+            'mail' => 'required|string|email|min:4|max:255|required_unless:mail,$mail',
+            'password' => 'nullable|alpha_num|min:4|max:12|unique:users|different:password',
+            'bio' => 'nullable|max:200',
+            'image' => 'nullable|image|mimes:jpg,png,bmp,gif,svg|alpha_num'
+        ], [
+            'username.required' => '入力必須項目です。',
+            'username.min' => '4文字以上で入力してください。',
+            'username.max' => '255文字以内で入力してください。',
+            'mail.required' => '入力必須項目です。',
+            'mail.min' => '4文字以上で入力してください。',
+            'mail.max' => '255文字以内で入力してください。',
+            'mail.unique' => 'すでに使われているメールアドレスです。',
+            'password.alpha_num' => '英数字で入力してください。',
+            'password.min' => '4文字以上で入力してください。',
+            'password.max' => '12文字以内で入力してください。',
+            'password.unique' => 'すでに使われているパスワードです。',
+            'password.different' => '登録されているパスワードです。',
+            'bio.max' => '200文字以内で入力してください',
+            'image.image' => '画像ファイルではありません。',
+            'image.mines' => 'jpg,png,bmp,gif,svgファイル以外の画像は不可。',
+            'image.alpha_num' => '英数字で入力してください。',
+        ]);
     }
 
     public function index()
@@ -85,7 +120,7 @@ class PostsController extends Controller
         $password = $user['password'];
         $bio = $user['bio'];
         if (!isset($bio)) {
-            $bio = "自己紹介を入れてね。";
+            $bio = "";
         }
         //dd($bio);
         return view('posts.profile', compact('user_address', 'password', 'bio'));
@@ -93,52 +128,61 @@ class PostsController extends Controller
 
     public function update(Request $request)
     {
-        //dd($_FILES);
-        //dd($request);
-        $id = $request->input('id');
-        $username = $request->input('username');
-        $user_address = $request->input('userAddress');
-        $password = $request->input('password');
-        $new_password = $request->input('newPassword');
-        $bio = $request->input('bio');
-        //dd($bio);
-        //$filename = $request->input('image');
-        $filename = $_FILES['image']['name'];
-        //dd($filename);
-        if (!empty($new_password)) {
-            DB::table('users')
-                ->where('id', $id)
-                ->update([
-                    'password' => $new_password
-                ]);
-        }
-        //dd($pass);
-        DB::table('users')
-            ->where('id', $id)
-            ->update(
-                [
-                    'username' => $username,
-                    'mail' => $user_address,
-                    'bio' => $bio,
-                    'updated_at' => now()
-                ]
-            );
-        if (!empty($filename)) {
-            DB::table('users')
-                ->where('id', $id)
-                ->update([
-                    'images' => $filename
-                ]);
-        }
-        //dd($_FILES);
-        //画像があればローカルフォルダに保存
-        if (!empty($_FILES)) {
+        $data = $request->input();
+
+        $validator = $this->validator($data);
+
+        if ($validator->fails()) {
+            return redirect('/login-profile')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            //dd($_FILES);
+            //dd($request);
+            $id = $request->input('id');
+            $username = $request->input('username');
+            $user_address = $request->input('mail');
+            $new_password = $request->input('password');
+            $bio = $request->input('bio');
+            //dd($bio);
+            //$filename = $request->input('image');
             $filename = $_FILES['image']['name'];
+            //dd($filename);
+            if (!empty($new_password)) {
+                DB::table('users')
+                    ->where('id', $id)
+                    ->update([
+                        'password' => $new_password
+                    ]);
+            }
+            //dd($pass);
+            DB::table('users')
+                ->where('id', $id)
+                ->update(
+                    [
+                        'username' => $username,
+                        'mail' => $user_address,
+                        'bio' => $bio,
+                        'updated_at' => now()
+                    ]
+                );
+            if (!empty($filename)) {
+                DB::table('users')
+                    ->where('id', $id)
+                    ->update([
+                        'images' => $filename
+                    ]);
+            }
+            //dd($_FILES);
+            //画像があればローカルフォルダに保存
+            if (!empty($_FILES)) {
+                $filename = $_FILES['image']['name'];
 
-            $uploaded_path = 'images/' . $filename;
+                $uploaded_path = 'images/' . $filename;
 
-            move_uploaded_file($_FILES['image']['tmp_name'], $uploaded_path);
+                move_uploaded_file($_FILES['image']['tmp_name'], $uploaded_path);
+            }
+            return redirect('/top');
         }
-        return redirect('/top');
     }
 }

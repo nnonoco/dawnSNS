@@ -8,7 +8,7 @@
   <div class="post-wrapper">
     <img src="{{asset('images/'.$userimage)}}">
     <div class="post-item">
-      {{ Form::input('text','newPosts',null,['class' => 'form-control','placeholder'=>'何をつぶやこうか…？'])}}
+      {{ Form::input('textarea','newPosts',null,['class' => 'form-control','placeholder'=>'何をつぶやこうか…？','maxlength' => '200'])}}
     </div>
     <input type="image" class="submit" name="submit" src="{{asset('images/post.png')}}" alt="送信">
     {!! Form::close() !!}
@@ -52,7 +52,7 @@
     <div class="update_form">
       <form action="/post/update" method="GET">
         <input type="hidden" name="id" value="{{$update_post->id}}">
-        <input type="text" name="posts" class="update_post" value="{{$update_post->posts}}">
+        <input type="textarea" name="posts" class="update_post" value="{{$update_post->posts}}" maxlength="200">
         <input type="hidden" name="updated_at" value="{{$update_post->updated_at}}">
         <input type="image" class="update_submit" name="submit" src="{{asset('images/edit.png')}}" alt="送信">
       </form>
