@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PostsController extends Controller
 {
@@ -31,12 +32,13 @@ class PostsController extends Controller
 
     protected function validator(array $data)
     {
+        //dd($data);
         return Validator::make($data, [
             'username' => 'required|string|min:4|max:255',
-            'mail' => 'required|string|email|min:4|max:255|required_unless:mail,$mail',
+            'mail' => ['required', 'string', 'email', 'min:4', 'max:255', Rule::unique('users')->ignore(Auth::id()),],
             'password' => 'nullable|alpha_num|min:4|max:12|unique:users|different:password',
             'bio' => 'nullable|max:200',
-            'image' => 'nullable|image|mimes:jpg,png,bmp,gif,svg|alpha_num'
+            'image' => 'nullable|image|mimes:jpg,png,bmp,gif,svg|alpha_num',
         ], [
             'username.required' => '入力必須項目です。',
             'username.min' => '4文字以上で入力してください。',
@@ -56,7 +58,7 @@ class PostsController extends Controller
             'image.alpha_num' => '英数字で入力してください。',
         ]);
     }
-
+    //Rule::unique('users')->ignore($data),
     public function index()
     {
         $post = DB::table('users')

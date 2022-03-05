@@ -63,14 +63,17 @@ header{
 }
 
 .menu img {
-    margin: 0 2rem;
     border-radius: 50%;
-    width: 100%;
+    width: 80%;
+    height: 80%;
 }
 .login-user-icon{
     height: 100%;
     width: 100px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* プルダウン */
