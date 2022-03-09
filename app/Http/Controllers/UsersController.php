@@ -47,10 +47,9 @@ class UsersController extends Controller
         //dd($follow);
         $result = DB::table('users')
             ->where('id', '!=', $login_id)
-            ->get()
-            ->toArray();
+            ->get();
         //dd($result);
-        return view('users.search', ['result' => $result], ['follow' => $follow]);
+        return view('users.search', ['result' => $result, 'follow' => $follow]);
     }
     public function result()
     {
@@ -67,8 +66,7 @@ class UsersController extends Controller
         $search_username = $_POST["searchName"];
         $result = DB::table('users')
             ->where('username', 'like', '%' . $search_username . '%')
-            ->get()
-            ->toArray();
+            ->get();
 
         return view('users.search', compact('search_username', 'result', 'follow'));
     }

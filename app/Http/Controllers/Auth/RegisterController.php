@@ -94,11 +94,6 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        //$password = $request->input('password');
-        //$password_confirm = $request->input('password-confirm');
-        //dd($password);
-        //if ($password !== $password_confirm) {
-        //  echo "パスワードが一致しません。";
         if ($request->isMethod('post')) {
             $data = $request->input();
 

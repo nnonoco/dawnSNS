@@ -28,20 +28,6 @@
           <p class="created-at">{{ $post->created_at }}</p>
         </div>
         <p class="timeline-post">{{ $post->posts }}</p>
-        @if($username === $post->username)
-        <div class="icon">
-          <div class="update-icon">
-            <a href="/post/{{ $post->id }}/update">
-              <img src="images/edit.png">
-            </a>
-          </div>
-        </div>
-        <div class="delete-icon">
-          <a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
-            <img src="images/trash_h.png">
-          </a>
-        </div>
-        @endif
       </div>
     </div>
     @endforeach

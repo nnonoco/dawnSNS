@@ -41,7 +41,7 @@ class FollowsController extends Controller
             ->get();
         //dd($post);
 
-        return view('follows.followList', ['post' => $post], ['follow_image' => $follow_image]);
+        return view('follows.followList', ['post' => $post, 'follow_image' => $follow_image]);
     }
     //フォロワーリスト
     public function followerList()

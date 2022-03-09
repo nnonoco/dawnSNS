@@ -49,7 +49,7 @@
 
       <div class="profile-item">
         <label>Bio</label>
-        <input type="text" name="bio" class="profile-bio" value="{{$bio}}" placeholder="自己紹介をいれてね">
+        <input type="textarea" name="bio" class="profile-bio" value="{{$bio}}" placeholder="自己紹介をいれてね">
       </div>
       <!--エラー文-->
       @if($errors->has('bio'))

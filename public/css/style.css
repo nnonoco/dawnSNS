@@ -244,9 +244,10 @@ border-radius: 50%;
     height: 40px;
     width: 40px;
      margin-right: 1rem;
+     cursor: pointer;
 }
 
-.update-icon a img{
+.update-icon img{
     height: 40px;
     width: 40px;
     margin-right: 1rem;
@@ -276,25 +277,51 @@ border-radius: 50%;
     background-size: 40px 40px;
 }
 
+/*モーダル*/
+
+.modal-container{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+text-align: center;
+background: rgba(128, 128, 128, 0.3);
+padding: 40px 20px;
+overflow: auto;
+opacity: 0;
+visibility: hidden;
+transition: .3s;
+  box-sizing: border-box;
+}
+
+.modal-container:before{
+content: "";
+display: inline-block;
+vertical-align: middle;
+height: 100%;
+}
+
+.modal-container.active{
+opacity: 1;
+visibility: visible;
+}
+
+.modal-body{
+position: relative;
+display: inline-block;
+vertical-align: middle;
+width: 50%;
+}
+
+.modal-content{
+background: #fff;
+text-align: left;
+padding: 30px;
+}
+
 /*編集画面*/
-.update{
-    position: fixed;
-    inset: 0;
-    margin: auto;
-    background-color: rgba( 128, 128, 128, 0.3 );
-}
-.update_form{
-    position: fixed;
-    inset: 0;
-    margin: auto;
-    background-color: #fff;
-    width: 50%;
-    height: 30%;
-    display: flex;
-    justify-content: center;
-    padding: 2rem 3rem;
-}
-.update form{
+.modal-content form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -310,7 +337,7 @@ border-radius: 50%;
     width: 100%;
     height: 70%;
     margin-bottom: 1rem;
-    vertical-align: top;
+    padding: 2rem 0;
 }
 /*フォローリスト*/
 .follow-list{

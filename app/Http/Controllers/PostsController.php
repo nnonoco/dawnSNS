@@ -11,17 +11,33 @@ use Illuminate\Validation\Rule;
 class PostsController extends Controller
 {
     //
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
     protected function create(Request $request)
     {
-        $post = $request->input('newPosts');
-        DB::table('posts')->insert([
-            'user_id' => Auth::id(),
-            'posts' => $post,
-            'created_at' => now()
+        $post = $request->input('posts');
+        $validator = Validator::make($request->all(), [
+            'posts' => 'max:200'
+        ], [
+            'posts.max' => '200文字以内で入力してください。'
         ]);
 
-
-        return redirect('/top');
+        if ($validator->fails()) {
+            return redirect('/top')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            DB::table('posts')->insert([
+                'user_id' => Auth::id(),
+                'posts' => $post,
+                'created_at' => now()
+            ]);
+            return redirect('/top');
+        }
     }
     /**
      * Get a validator for an incoming registration request.
@@ -58,14 +74,30 @@ class PostsController extends Controller
             'image.alpha_num' => '英数字で入力してください。',
         ]);
     }
-    //Rule::unique('users')->ignore($data),
     public function index()
     {
+        //ログインid名
+        $login_id = Auth::id();
+        //dd($login_id);
+        //ログインidがfollowsテーブルのfollowerにいるfollowユーザーのidを取得
+        $follow = DB::table('follows')
+            ->where('follower', $login_id)
+            ->select('follows.follow')
+            ->get()
+            ->toArray();
+        //$followに連想配列
+        //dd($follow);
+        $follow_id = array_column($follow, 'follow');
+        //連想配列を単一に
+        //dd($follow_id);
         $post = DB::table('users')
             ->join('posts', 'users.id', 'posts.user_id')
+            ->where('user_id', $login_id)
+            ->orWhereIn('user_id', $follow_id)
             ->select('posts.*', 'users.username', 'users.images')
             ->latest()
             ->get();
+        //dd($post);
 
         return view('posts.index', ['post' => $post]);
     }
@@ -97,13 +129,28 @@ class PostsController extends Controller
         $id = $request->input('id');
         $up_post = $request->input('posts');
         $updated_at = $request->input('update_at');
-        DB::table('posts')
-            ->where('id', $id)
-            ->update(
-                ['posts' => $up_post],
-                ['updated_at' => $updated_at]
-            );
-        return redirect('/top');
+
+        $validator = Validator::make($request->all(), [
+            'posts' => 'max:200'
+        ], [
+            'posts.max' => '200文字以内で入力してください。'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/top')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            DB::table('posts')
+                ->where('id', $id)
+                ->update(
+                    [
+                        'posts' => $up_post,
+                        'updated_at' => $updated_at
+                    ]
+                );
+            return redirect('/top');
+        }
     }
 
     public function delete($id)
