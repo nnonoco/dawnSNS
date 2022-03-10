@@ -11,25 +11,27 @@ $(".menu-trigger").click(function () {
 
 //モーダル
 $(function () {
-  var open = $('.update-icon'),
-    container = $('.modal-container'),
-    post = JSON.parse('<?php echo $post_json; ?>');
+  $(".update-icon").each(function () {
+    $(this).on("click", function () {
+      var $this = $(this);
+      var getId = $this.children().data("id");
+      var getPost = $this.children().data("post");
 
-  open.on('click', function () {
-    var PostId = document.querySelector('input[name="id"]');
-    PostId.value = post['id'];
-    var PostPosts = document.querySelector('input[name="posts"]');
-    PostPosts.value = post['posts'];
-    var PostUp = document.querySelector('input[name="updated_at"]');
-    PostUp.value = post['updated_at'];
-    console.log(PostId);
-    container.addClass('active');
-    return false;
+      document.getElementById("id").removeAttribute("value");
+      document.getElementById("posts").removeAttribute("value");
+
+      var element = document.getElementById("id");
+      element.defaultValue = getId;
+      var elementPost = document.getElementById("posts");
+      elementPost.defaultValue = getPost;
+
+      $(".modal-container").addClass('active');
+      return false;
+    });
   });
-
   $(document).on('click', function (e) {
     if (!$(e.target).closest('.modal-body').length) {
-      container.removeClass('active');
+      $('.modal-container').removeClass('active');
     }
   });
 });

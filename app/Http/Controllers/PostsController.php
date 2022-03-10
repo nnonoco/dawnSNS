@@ -125,10 +125,9 @@ class PostsController extends Controller
 
     public function postUpdate(Request $request)
     {
-        //dd($request);
+        dd($request);
         $id = $request->input('id');
         $up_post = $request->input('posts');
-        $updated_at = $request->input('update_at');
 
         $validator = Validator::make($request->all(), [
             'posts' => 'max:200'
@@ -146,7 +145,7 @@ class PostsController extends Controller
                 ->update(
                     [
                         'posts' => $up_post,
-                        'updated_at' => $updated_at
+                        'updated_at' => now()
                     ]
                 );
             return redirect('/top');

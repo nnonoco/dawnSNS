@@ -36,19 +36,18 @@
           @if($username === $post->username)
           <div class="icon">
             <!--編集ボタン-->
-            <div class="update-icon">
-              <img src="{{asset('images/edit.png')}}">
-            </div>
-            <?php $post_json = json_encode($post); ?>
+            <a class="update-icon">
+              <img src="{{asset('images/edit.png')}}" id="timeline" data-id="{{$post->id}}" data-post="{{$post->posts}}">
+            </a>
             <!--編集画面-->
             <div class="modal-container">
               <div class="modal-body">
                 <div class="modal-content">
                   <form action="/post/update" method="POST">
                     @csrf
-                    <input type="hidden" name="id" value="{{$post->id}}">
-                    <input type="textarea" name="posts" class="update_post" value="{{$post->posts}}">
-                    <input type="hidden" name="updated_at" value="{{$post->updated_at}}">
+                    <input type="hidden" name="id" id="id" value="">
+                    <input type="textarea" name="posts" id="posts" class="update_post" value="">
+                    <input type="hidden" name="updated_at">
                     <input type="image" class="update_submit" name="submit" src="{{asset('images/edit.png')}}" alt="送信">
                   </form>
                 </div>
