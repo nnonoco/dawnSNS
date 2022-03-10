@@ -17,13 +17,8 @@ $(function () {
       var getId = $this.children().data("id");
       var getPost = $this.children().data("post");
 
-      document.getElementById("id").removeAttribute("value");
-      document.getElementById("posts").removeAttribute("value");
-
-      var element = document.getElementById("id");
-      element.defaultValue = getId;
-      var elementPost = document.getElementById("posts");
-      elementPost.defaultValue = getPost;
+      document.getElementById("id").defaultValue = getId;
+      document.getElementById("posts").defaultValue = getPost;
 
       $(".modal-container").addClass('active');
       return false;
