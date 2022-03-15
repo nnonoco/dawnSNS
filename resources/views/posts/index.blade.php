@@ -39,20 +39,6 @@
             <a class="update-icon">
               <img src="{{asset('images/edit.png')}}" id="timeline" data-id="{{$post->id}}" data-post="{{$post->posts}}">
             </a>
-            <!--編集画面-->
-            <div class="modal-container">
-              <div class="modal-body">
-                <div class="modal-content">
-                  <form action="/post/update" method="POST">
-                    @csrf
-                    <input type="hidden" name="id" id="id" value="">
-                    <input type="textarea" name="posts" id="posts" class="update_post" value="">
-                    <input type="hidden" name="updated_at">
-                    <input type="image" class="update_submit" name="submit" src="{{asset('images/edit.png')}}" alt="送信">
-                  </form>
-                </div>
-              </div>
-            </div>
             <!--削除画面-->
             <div class="delete-icon">
               <a href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
@@ -64,6 +50,20 @@
         </div>
       </div>
       @endforeach
+      <!--編集画面-->
+      <div class="modal-container">
+        <div class="modal-body">
+          <div class="modal-content">
+            <form action="/post/update" method="POST" name="formModal">
+              @csrf
+              <input type="hidden" name="id" id="id" value="">
+              <input type="textarea" name="posts" id="posts" class="update_post" value="">
+              <input type="hidden" name="updated_at">
+              <input type="image" class="update_submit" name="submit" src="{{asset('images/edit.png')}}" alt="送信">
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

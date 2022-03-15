@@ -125,7 +125,7 @@ class PostsController extends Controller
 
     public function postUpdate(Request $request)
     {
-        dd($request);
+        //dd($request);
         $id = $request->input('id');
         $up_post = $request->input('posts');
 
