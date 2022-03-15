@@ -11,21 +11,20 @@ $(".menu-trigger").click(function () {
 
 //モーダル
 $(function () {
-  $(".update-icon").each(function () {
-    $(this).on("click", function () {
-      var $this = $(this);
-      var getId = $this.children().data("id");
-      var getPost = $this.children().data("post");
+  $('.update-icon').on('click', function () {
+    var $this = $(this);
+    var getId = $this.children().data("id");
+    var getPost = $this.children().data("post");
 
-      PostId = document.getElementById("id");
-      PostId.value = getId;
-      PostPost = document.getElementById("posts");
-      PostPost.value = getPost;
+    PostId = document.getElementById("id");
+    PostId.value = getId;
+    PostPost = document.getElementById("posts");
+    PostPost.value = getPost;
 
-      $(".modal-container").addClass('active');
-      return false;
-    });
+    $('.modal-container').addClass('active');
+    return false;
   });
+
   $(document).on('click', function (e) {
     if (!$(e.target).closest('.modal-body').length) {
       $('.modal-container').removeClass('active');
